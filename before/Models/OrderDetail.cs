@@ -1,4 +1,4 @@
-namespace GenericControllerRepository.Models
+namespace RegularService.Models
 {
     public class OrderDetail : BaseModel
     {

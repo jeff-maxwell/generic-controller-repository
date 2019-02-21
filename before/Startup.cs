@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GenericControllerRepository.Interfaces;
-using GenericControllerRepository.Services;
+using RegularService.Interfaces;
+using RegularService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,9 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SiteTraxx.Services;
 
-namespace GenericControllerRepository
+namespace RegularService
 {
     public class Startup
     {
@@ -32,7 +31,13 @@ namespace GenericControllerRepository
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
 
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<ICustomer, CustomerService>();
+            services.AddScoped<IEmployee, EmployeeService>();
+            services.AddScoped<IOrder, OrderService>();
+            services.AddScoped<IOrderDetail, OrderDetailService>();
+            services.AddScoped<IProduct, ProductService>();
+            services.AddScoped<IShipper, ShipperService>();
+            services.AddScoped<ISupplier, SupplierService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

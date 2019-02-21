@@ -1,23 +1,20 @@
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using GenericControllerRepository.Interfaces;
-using GenericControllerRepository.Models;
-using GenericControllerRepository.Services;
+using RegularService.Interfaces;
+using RegularService.Models;
 
-namespace SiteTraxx.Services
+namespace RegularService.Services
 {
-    public class Repository<T> : IRepository<T> where T : BaseModel
+    public class SupplierService : ISupplier
     {
-       private DataContext _context;
-        public Repository(DataContext context)
+        private DataContext _context;
+        public SupplierService(DataContext context)
         {
             _context = context;
         }
-        public async Task<T> Add(T entity)
+        public async Task<Supplier> Add(Supplier entity)
         {
             if (entity.Id == null) {
                 entity.Id = Guid.NewGuid();
@@ -26,14 +23,14 @@ namespace SiteTraxx.Services
             entity.CreatedDate = DateTime.UtcNow;
             entity.UpdatedDate = DateTime.UtcNow;
 
-            await _context.Set<T>().AddAsync(entity);
+            await _context.Suppliers.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
         public async Task<bool> Delete(Guid id)
         {
-            var entity = await _context.Set<T>().FindAsync(id);
+            var entity = await _context.Suppliers.FindAsync(id);
 
             if (entity.CreatedDate == null)
                 entity.CreatedDate = DateTime.UtcNow;
@@ -43,22 +40,22 @@ namespace SiteTraxx.Services
             entity.DeletedDate = DateTime.UtcNow;
 
             _context.Entry(entity).State = EntityState.Modified;
-            _context.Set<T>().Update(entity);
+            _context.Suppliers.Update(entity);
             await _context.SaveChangesAsync();
             return true;
         }
  
-        public async Task<T> GetById(Guid id)
+        public async Task<Supplier> GetById(Guid id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Suppliers.FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<Supplier>> GetAll()
         {
-            return await _context.Set<T>().ToListAsync<T>();
+            return await _context.Suppliers.ToListAsync();
         }
  
-        public async Task<T> Update(T entity)
+        public async Task<Supplier> Update(Supplier entity)
         {
             if (entity.CreatedDate == null)
                 entity.CreatedDate = DateTime.UtcNow;
@@ -66,9 +63,13 @@ namespace SiteTraxx.Services
             entity.UpdatedDate = DateTime.UtcNow;
 
             _context.Entry(entity).State = EntityState.Modified;
-            _context.Set<T>().Update(entity);
+            _context.Suppliers.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task<int> Count() {
+            return await _context.Suppliers.CountAsync();
         }
     }
 }

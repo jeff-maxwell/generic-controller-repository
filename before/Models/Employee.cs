@@ -1,6 +1,6 @@
 using System;
 
-namespace GenericControllerRepository.Models
+namespace RegularService.Models
 {
     public class Employee : People
     {

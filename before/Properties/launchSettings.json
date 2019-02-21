@@ -17,7 +17,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
         },
-        "GenericControllerRepository": {
+        "RegularService": {
             "commandName": "Project",
             "launchBrowser": true,
             "launchUrl": "api/values",
