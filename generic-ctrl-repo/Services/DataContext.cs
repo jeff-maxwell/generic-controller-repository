@@ -5,6 +5,7 @@ namespace GenericControllerRepository.Services
 {
     public class DataContext : DbContext
     {
+/*
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -13,7 +14,7 @@ namespace GenericControllerRepository.Services
         public DbSet<Shipper> Shippers { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
-
+ */
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
