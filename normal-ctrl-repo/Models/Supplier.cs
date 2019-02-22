@@ -1,4 +1,4 @@
-namespace RegularService.Models
+namespace RegularControllerRepo.Models
 {
     public class Supplier : Company
     {

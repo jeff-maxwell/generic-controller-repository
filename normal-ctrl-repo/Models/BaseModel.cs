@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RegularService.Models
+namespace RegularControllerRepo.Models
 {
     public class BaseModel
     {

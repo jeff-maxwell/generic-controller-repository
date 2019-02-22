@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RegularService.Models;
+using RegularControllerRepo.Models;
 
-namespace RegularService.Services
+namespace RegularControllerRepo.Services
 {
     public class DataContext : DbContext
     {

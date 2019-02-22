@@ -1,6 +1,6 @@
 using System;
 
-namespace RegularService.Models
+namespace RegularControllerRepo.Models
 {
     public class Order : BaseModel
     {

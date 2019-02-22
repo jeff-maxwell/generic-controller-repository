@@ -1,30 +1,30 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using RegularService.Interfaces;
-using RegularService.Models;
+using RegularControllerRepo.Interfaces;
+using RegularControllerRepo.Models;
 
-namespace RegularService.Controllers
+namespace RegularControllerRepo.Controllers
 {
     [Route("api/[controller]")]
     public class OrderController : Controller
     {
-        IOrder _OrderService;
-        public OrderController(IOrder OrderService)
+        IRepository<Order> _repoService;
+        public OrderController(IRepository<Order> repoService)
         {
-            _OrderService = OrderService;
+            _repoService = repoService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _OrderService.GetAll());
+            return Ok(await _repoService.GetAll());
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var record = await _OrderService.GetById(id);
+            var record = await _repoService.GetById(id);
             if (record == null)
                 return NotFound();
 
@@ -34,7 +34,7 @@ namespace RegularService.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Order record)
         {
-            var newRecord = await _OrderService.Add(record);
+            var newRecord = await _repoService.Add(record);
 
             return Ok(newRecord);
         }
@@ -42,7 +42,7 @@ namespace RegularService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] Order record)
         {
-            var updatedRecord = await _OrderService.Update(record);
+            var updatedRecord = await _repoService.Update(record);
 
             return Ok(updatedRecord);
         }
@@ -50,7 +50,7 @@ namespace RegularService.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var result = await _OrderService.Delete(id);
+            var result = await _repoService.Delete(id);
 
             return Ok(result);
         }
@@ -58,7 +58,7 @@ namespace RegularService.Controllers
         [HttpGet("count")]
         public async Task<IActionResult> Count()
         {
-            var result = await _OrderService.Count();
+            var result = await _repoService.Count();
 
             return Ok(result);
         }

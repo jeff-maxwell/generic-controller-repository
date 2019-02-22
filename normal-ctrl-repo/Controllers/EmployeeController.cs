@@ -1,30 +1,30 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using RegularService.Interfaces;
-using RegularService.Models;
+using RegularControllerRepo.Interfaces;
+using RegularControllerRepo.Models;
 
-namespace RegularService.Controllers
+namespace RegularControllerRepo.Controllers
 {
     [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
-        IEmployee _employeeService;
-        public EmployeeController(IEmployee employeeService)
+        IRepository<Employee> _repoService;
+        public EmployeeController(IRepository<Employee> repoService)
         {
-            _employeeService = employeeService;
+            _repoService = repoService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _employeeService.GetAll());
+            return Ok(await _repoService.GetAll());
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var record = await _employeeService.GetById(id);
+            var record = await _repoService.GetById(id);
             if (record == null)
                 return NotFound();
 
@@ -34,7 +34,7 @@ namespace RegularService.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Employee record)
         {
-            var newRecord = await _employeeService.Add(record);
+            var newRecord = await _repoService.Add(record);
 
             return Ok(newRecord);
         }
@@ -42,7 +42,7 @@ namespace RegularService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] Employee record)
         {
-            var updatedRecord = await _employeeService.Update(record);
+            var updatedRecord = await _repoService.Update(record);
 
             return Ok(updatedRecord);
         }
@@ -50,7 +50,7 @@ namespace RegularService.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var result = await _employeeService.Delete(id);
+            var result = await _repoService.Delete(id);
 
             return Ok(result);
         }
@@ -58,7 +58,7 @@ namespace RegularService.Controllers
         [HttpGet("count")]
         public async Task<IActionResult> Count()
         {
-            var result = await _employeeService.Count();
+            var result = await _repoService.Count();
 
             return Ok(result);
         }

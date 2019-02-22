@@ -1,20 +1,23 @@
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RegularService.Interfaces;
-using RegularService.Models;
+using RegularControllerRepo.Interfaces;
+using RegularControllerRepo.Models;
+using RegularControllerRepo.Services;
 
-namespace RegularService.Services
+namespace RegularControllerRepo.Services
 {
-    public class SupplierService : ISupplier
+    public class Repository<T> : IRepository<T> where T : BaseModel
     {
-        private DataContext _context;
-        public SupplierService(DataContext context)
+       private DataContext _context;
+        public Repository(DataContext context)
         {
             _context = context;
         }
-        public async Task<Supplier> Add(Supplier entity)
+        public async Task<T> Add(T entity)
         {
             if (entity.Id == null) {
                 entity.Id = Guid.NewGuid();
@@ -23,14 +26,14 @@ namespace RegularService.Services
             entity.CreatedDate = DateTime.UtcNow;
             entity.UpdatedDate = DateTime.UtcNow;
 
-            await _context.Suppliers.AddAsync(entity);
+            await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
         public async Task<bool> Delete(Guid id)
         {
-            var entity = await _context.Suppliers.FindAsync(id);
+            var entity = await _context.Set<T>().FindAsync(id);
 
             if (entity.CreatedDate == null)
                 entity.CreatedDate = DateTime.UtcNow;
@@ -40,22 +43,22 @@ namespace RegularService.Services
             entity.DeletedDate = DateTime.UtcNow;
 
             _context.Entry(entity).State = EntityState.Modified;
-            _context.Suppliers.Update(entity);
+            _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
             return true;
         }
  
-        public async Task<Supplier> GetById(Guid id)
+        public async Task<T> GetById(Guid id)
         {
-            return await _context.Suppliers.FindAsync(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<Supplier>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return await _context.Suppliers.ToListAsync();
+            return await _context.Set<T>().ToListAsync<T>();
         }
  
-        public async Task<Supplier> Update(Supplier entity)
+        public async Task<T> Update(T entity)
         {
             if (entity.CreatedDate == null)
                 entity.CreatedDate = DateTime.UtcNow;
@@ -63,13 +66,14 @@ namespace RegularService.Services
             entity.UpdatedDate = DateTime.UtcNow;
 
             _context.Entry(entity).State = EntityState.Modified;
-            _context.Suppliers.Update(entity);
+            _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<int> Count() {
-            return await _context.Suppliers.CountAsync();
+        public async Task<int> Count()
+        {
+            return await _context.Set<T>().CountAsync();
         }
     }
 }

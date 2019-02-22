@@ -8,7 +8,7 @@ using GenericControllerRepository.Interfaces;
 using GenericControllerRepository.Models;
 using GenericControllerRepository.Services;
 
-namespace SiteTraxx.Services
+namespace GenericControllerRepository.Services
 {
     public class Repository<T> : IRepository<T> where T : BaseModel
     {
@@ -69,6 +69,11 @@ namespace SiteTraxx.Services
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task<int> Count()
+        {
+            return await _context.Set<T>().CountAsync();
         }
     }
 }

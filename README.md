@@ -10,3 +10,20 @@ There are 3 different projects to show the various stages of the solutions.
 2. normal-ctrl-repo - Contains a Controller for each Object but uses a Generic Respository for the Interface and Services.
 
 3. generic-ctrl-repo - Has a Controller for each object that inherits from a Generic controller with a generic repository.
+
+## Project Stats
+
+|                     | # of Files | Lines of Code (LOC) |
+|---------------------|------------|---------------------|
+| normal-ctrl-service |     36     |       1,168         |
+| normal-ctrl-repo    |     24     |         698         |
+| generic-ctrl-repo   |     25     |         459         |
+
+## Project Breakdown
+
+|                     |  Controllers  |     Models    |   Interfaces  |   Services   |
+|---------------------|---------------|---------------|---------------|--------------|
+|                     | # Files / LOC | # Files / LOC | # Files / LOC | # File / LOC |
+| normal-ctrl-service |   7 / 378     |   10 / 127    |    7 / 112    |   8 / 463    |
+| normal-ctrl-repo    |   7 / 378     |   10 / 127    |     1 / 17    |    2 / 94    |
+| generic-ctrl-repo   |   8 / 139     |   10 / 127    |     1 / 17    |    2 / 94    |
