@@ -9,13 +9,15 @@ There are a lot of examples using this pattern like this example from Microsoft 
 There is a Controller created for each Object to be returned from the database.
 
 **Example:**
+
 EmployeeController has the following API calls:
-GET - /api/employee -> returns all Employees
-GET - /api/employee/{id} -> returns Employee record matching {id}
-GET - /api/employee/count -> returns number of Employees
-POST - /api/employee -> creates a new Employee
-PUT - /api/employee/{id} -> updates Employee record matching {id}
-DELETE - /api/employee/{id} -> deletes Employee record matching {id}
+
+- GET - /api/employee -> returns all Employees
+- GET - /api/employee/{id} -> returns Employee record matching {id}
+- GET - /api/employee/count -> returns number of Employees
+- POST - /api/employee -> creates a new Employee
+- PUT - /api/employee/{id} -> updates Employee record matching {id}
+- DELETE - /api/employee/{id} -> deletes Employee record matching {id}
 
 ## Models
 
