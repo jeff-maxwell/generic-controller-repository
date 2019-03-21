@@ -39,14 +39,14 @@ public abstract class GenericController<TEntity> : Controller where TEntity : cl
 
 GenericController has the following API calls:
 
-- GET - /api/<entity> -> returns all <entity>
-- GET - /api/<entity>/{id} -> returns <entity> record matching {id}
-- GET - /api/<entity>/count -> returns number of <entity>
-- POST - /api/<entity> -> creates a new <entity>
-- PUT - /api/<entity>/{id} -> updates <entity> record matching {id}
-- DELETE - /api/<entity>/{id} -> deletes <entity> record matching {id}
+- GET - /api/[TEntity] -> returns all [TEntity]
+- GET - /api/[TEntity]/{id} -> returns [TEntity] record matching {id}
+- GET - /api/[TEntity]/count -> returns number of [TEntity]
+- POST - /api/[TEntity] -> creates a new [TEntity]
+- PUT - /api/[TEntity]/{id} -> updates [TEntity] record matching {id}
+- DELETE - /api/[TEntity]/{id} -> deletes [TEntity] record matching {id}
 
-NOTE: <entity> is the Model passed into the Generic Controller to be used in the backend service calls.
+NOTE: [TEntity] is the Model passed into the Generic Controller to be used in the backend service calls.
 
 ## Models
 
