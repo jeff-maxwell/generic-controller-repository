@@ -45,6 +45,7 @@ GenericController has the following API calls:
 - POST - /api/<entity> -> creates a new <entity>
 - PUT - /api/<entity>/{id} -> updates <entity> record matching {id}
 - DELETE - /api/<entity>/{id} -> deletes <entity> record matching {id}
+
 NOTE: <entity> is the Model passed into the Generic Controller to be used in the backend service calls.
 
 ## Models
