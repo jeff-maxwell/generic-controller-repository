@@ -21,11 +21,11 @@ There are 3 different projects to show the various stages of the solutions.
 
 ## Project Breakdown
 
-|                     |  Controllers  |     Models    |   Interfaces  |   Services   |
-|---------------------|---------------|---------------|---------------|--------------|
-|                     | # Files / LOC | # Files / LOC | # Files / LOC | # File / LOC |
-| normal-ctrl-service |   7 / 378     |   10 / 127    |    7 / 112    |   8 / 463    |
-| normal-ctrl-repo    |   7 / 378     |   10 / 127    |     1 / 17    |    2 / 94    |
-| generic-ctrl-repo   |   8 / 139     |   10 / 127    |     1 / 17    |    2 / 94    |
+|                     |  Controllers  |     Models    |   Interfaces  |   Services   |    Total     |
+|---------------------|---------------|---------------|---------------|--------------|--------------|
+|                     | # Files / LOC | # Files / LOC | # Files / LOC | # File / LOC | #Files / LOC |
+| normal-ctrl-service |   7 / 378     |   10 / 127    |    7 / 112    |   8 / 463    |    32 / 1080 |
+| normal-ctrl-repo    |   7 / 378     |   10 / 127    |     1 / 17    |    2 / 94    |    20 / 616  |
+| generic-ctrl-repo   |   8 / 139     |   10 / 127    |     1 / 17    |    2 / 94    |    21 / 377  |
 
 Looking at the breakdown the code saving is Controllers, Interfaces and Sevices with the Models staying the same across all projects and could be externalized into a separate class/assembly.
