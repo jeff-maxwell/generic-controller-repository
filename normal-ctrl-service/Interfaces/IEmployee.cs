@@ -8,9 +8,9 @@ namespace RegularService.Interfaces
     public interface IEmployee
     {
         Task<IEnumerable<Employee>> GetAll();
-        Task<Employee> GetById(Guid id);
+        Task<Employee> GetById(string id);
         Task<Employee> Add(Employee entity);
-        Task<bool> Delete(Guid id);
+        Task<bool> Delete(string id);
         Task<Employee> Update(Employee entity);
         Task<int> Count();
     }

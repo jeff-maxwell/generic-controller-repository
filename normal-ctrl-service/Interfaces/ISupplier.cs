@@ -8,9 +8,9 @@ namespace RegularService.Interfaces
     public interface ISupplier
     {
         Task<IEnumerable<Supplier>> GetAll();
-        Task<Supplier> GetById(Guid id);
+        Task<Supplier> GetById(string id);
         Task<Supplier> Add(Supplier entity);
-        Task<bool> Delete(Guid id);
+        Task<bool> Delete(string id);
         Task<Supplier> Update(Supplier entity);
         Task<int> Count();
     }

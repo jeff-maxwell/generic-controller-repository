@@ -22,7 +22,7 @@ namespace RegularService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetById(string id)
         {
             var record = await _ShipperService.GetById(id);
             if (record == null)
@@ -40,7 +40,7 @@ namespace RegularService.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] Shipper record)
+        public async Task<IActionResult> Update(string id, [FromBody] Shipper record)
         {
             var updatedRecord = await _ShipperService.Update(record);
 
@@ -48,7 +48,7 @@ namespace RegularService.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(string id)
         {
             var result = await _ShipperService.Delete(id);
 

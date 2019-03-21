@@ -17,7 +17,7 @@ namespace RegularService.Services
         public async Task<Supplier> Add(Supplier entity)
         {
             if (entity.Id == null) {
-                entity.Id = Guid.NewGuid();
+                entity.Id = Guid.NewGuid().ToString();
             }
 
             entity.CreatedDate = DateTime.UtcNow;
@@ -28,7 +28,7 @@ namespace RegularService.Services
             return entity;
         }
 
-        public async Task<bool> Delete(Guid id)
+        public async Task<bool> Delete(string id)
         {
             var entity = await _context.Suppliers.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace RegularService.Services
             return true;
         }
  
-        public async Task<Supplier> GetById(Guid id)
+        public async Task<Supplier> GetById(string id)
         {
             return await _context.Suppliers.FindAsync(id);
         }

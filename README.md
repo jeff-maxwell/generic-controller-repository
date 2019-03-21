@@ -15,9 +15,9 @@ There are 3 different projects to show the various stages of the solutions.
 
 |                     | # of Files | Lines of Code (LOC) |
 |---------------------|------------|---------------------|
-| normal-ctrl-service |     36     |       1,168         |
-| normal-ctrl-repo    |     24     |         698         |
-| generic-ctrl-repo   |     25     |         459         |
+| normal-ctrl-service |     37     |       1,197         |
+| normal-ctrl-repo    |     26     |         713         |
+| generic-ctrl-repo   |     27     |         466         |
 
 ## Project Breakdown
 

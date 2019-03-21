@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using RegularService.Models;
 
@@ -27,6 +28,24 @@ namespace RegularService.Services
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Shipper>().ToTable("Shipper");
             modelBuilder.Entity<Supplier>().ToTable("Supplier");
+
+            var emp1 = new Employee() 
+            {
+                Id = Guid.NewGuid().ToString(),
+                FirstName = "John",
+                LastName = "Doe",
+                Title = "The Boss",
+                BirthDate = DateTime.Now.AddYears(-30),
+                Address = "123 2nd Street",
+                City = "New York",
+                Region = "NY",
+                PostalCode = "12345-1234",
+                Country = "USA",
+                Phone = "(405) 555-1212",
+                HireDate = DateTime.Now.AddYears(-2)
+            };
+
+            modelBuilder.Entity<Employee>().HasData(emp1);
         }
     }
 }

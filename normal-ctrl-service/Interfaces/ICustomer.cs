@@ -8,9 +8,9 @@ namespace RegularService.Interfaces
     public interface ICustomer
     {
         Task<IEnumerable<Customer>> GetAll();
-        Task<Customer> GetById(Guid id);
+        Task<Customer> GetById(string id);
         Task<Customer> Add(Customer entity);
-        Task<bool> Delete(Guid id);
+        Task<bool> Delete(string id);
         Task<Customer> Update(Customer entity);
         Task<int> Count();
     }

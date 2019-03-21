@@ -8,9 +8,9 @@ namespace RegularService.Interfaces
     public interface IOrderDetail
     {
         Task<IEnumerable<OrderDetail>> GetAll();
-        Task<OrderDetail> GetById(Guid id);
+        Task<OrderDetail> GetById(string id);
         Task<OrderDetail> Add(OrderDetail entity);
-        Task<bool> Delete(Guid id);
+        Task<bool> Delete(string id);
         Task<OrderDetail> Update(OrderDetail entity);
         Task<int> Count();
     }

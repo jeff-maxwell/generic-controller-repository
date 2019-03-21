@@ -8,9 +8,9 @@ namespace RegularService.Interfaces
     public interface IShipper
     {
         Task<IEnumerable<Shipper>> GetAll();
-        Task<Shipper> GetById(Guid id);
+        Task<Shipper> GetById(string id);
         Task<Shipper> Add(Shipper entity);
-        Task<bool> Delete(Guid id);
+        Task<bool> Delete(string id);
         Task<Shipper> Update(Shipper entity);
         Task<int> Count();
     }
