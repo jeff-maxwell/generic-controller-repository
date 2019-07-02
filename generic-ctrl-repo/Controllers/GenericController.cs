@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using GenericControllerRepository.Interfaces;
 using GenericControllerRepository.Models;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GenericControllerRepository.Controllers
@@ -18,6 +19,7 @@ namespace GenericControllerRepository.Controllers
         }
 
         [HttpGet]
+        [EnableQuery]
         public IActionResult GetAll()
         {
             return Ok(_repository.GetAll());

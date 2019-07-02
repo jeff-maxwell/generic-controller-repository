@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GenericControllerRepository.Interfaces;
 using GenericControllerRepository.Services;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,7 @@ namespace GenericControllerRepository
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
-
+            services.AddOData();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
@@ -48,7 +49,14 @@ namespace GenericControllerRepository
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routeBuilder => {
+                routeBuilder.EnableDependencyInjection();
+                routeBuilder.Expand()
+                            .Select()
+                            .Count()
+                            .OrderBy()
+                            .Filter();
+            });
         }
     }
 }
